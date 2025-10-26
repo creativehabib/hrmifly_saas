@@ -119,6 +119,8 @@
             'app_version': "{{ $appVersion }}",
             'app_env': "{{ $appEnv }}",
             'app_type': "{{ $appType }}",
+            'main_product_registered': true,
+            'multiple_registration': false,
         };
     </script>
     @if (app_type() == 'saas')
