@@ -51,7 +51,13 @@ async function bootstrap() {
     authStore.updateActiveModules(window.config.modules);
 
     // Wait for all to complete
-    await Promise.all(authTasks);
+    try {
+        await Promise.all(authTasks);
+    } catch (error) {
+        console.error("Failed to complete initial application bootstrap", error);
+    } finally {
+        authStore.updateAppChecking(false);
+    }
 
     const i18n = setupI18n({
         legacy: false,
